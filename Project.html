@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<style>
+/* Style for the body and background */
+body {
+  font-family: Arial, sans-serif;
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Center container with padding and shadow */
+.container {
+  background-color: blue;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Header styles */
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Input field styling */
+input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* Add Task button styling */
+button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+/* Task list style */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #e9ecef;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Remove button styling */
+li button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+li button:hover {
+  background-color: #c82333;
+}
+</style>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>To-Do List</h1>
+  <input type="text" id="taskInput" placeholder="New task...">
+  <button onclick="addTask()">Add Task</button>
+
+  <ul id="taskList"></ul>
+
+  <script>
+  function addTask() {
+  const taskInput = document.getElementById('taskInput').value;
+  if (taskInput === '') {
+    alert('Please enter a task.');
+    return;
+  }
+
+  const li = document.createElement('li');
+  li.innerHTML = taskInput + ' <button onclick="removeTask(this)">Remove</button>';
+  document.getElementById('taskList').appendChild(li);
+  document.getElementById('taskInput').value = '';
+}
+
+function removeTask(button) {
+  const li = button.parentElement;
+  document.getElementById('taskList').removeChild(li);
+}
+</script>
+</body>
+</html>
